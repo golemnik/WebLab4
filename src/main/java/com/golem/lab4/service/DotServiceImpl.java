@@ -1,6 +1,5 @@
 package com.golem.lab4.service;
 
-
 import com.golem.lab4.dao.DotRepository;
 import com.golem.lab4.data.Dot;
 import org.springframework.beans.factory.annotation.Autowired;
