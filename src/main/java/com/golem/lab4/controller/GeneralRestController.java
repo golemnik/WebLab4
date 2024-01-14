@@ -3,6 +3,8 @@ package com.golem.lab4.controller;
 import com.golem.lab4.data.Dot;
 import com.golem.lab4.service.DotService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,13 +26,14 @@ public class GeneralRestController {
     }
 
     @PostMapping("/dots")
-    public void addDot (@RequestBody Dot dot) {
+    public ResponseEntity<String> addDot (@RequestBody Dot dot) {
         dotService.saveDot(dot);
+        return new ResponseEntity<>("Ok", HttpStatus.OK);
     }
 
-    @DeleteMapping("/dots/{id}")
-    public String deleteDot (@PathVariable int id) {
-        dotService.deleteDot(id);
-        return "Dot with id {" + id + "} removed.";
+    @DeleteMapping("/dots")
+    public ResponseEntity<String> deleteDots() {
+        dotService.deleteAll();
+        return new ResponseEntity<>("Ok", HttpStatus.OK);
     }
 }
