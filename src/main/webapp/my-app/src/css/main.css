@@ -6,28 +6,20 @@ html, body {
     overflow: hidden;
 }
 
-input[type="text"], .ui-spinner {
+input {
     color: #ffffff;
     background: transparent;
     outline: none;
     border: transparent;
+    margin: 10px;
 }
 
-*.ui-state-focus {
-    border: transparent !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
 
-.ui-spinner-text, input[type="text"] {
-    text-align: center !important;
-}
-
-button, input[type="button"], input[type="submit"], .ui-spinner-button {
+button, input[type="button"], input[type="submit"] {
     background-color: #000000 !important;
     color: #ffffff !important;
     border-radius: 5px !important;
-    margin: 5px;
+    margin: 10px;
     border: 5px #000000 !important;
     min-height: 45px;
     min-width: 50px;
@@ -37,8 +29,8 @@ button, input[type="button"], input[type="submit"], .ui-spinner-button {
 button:hover,
 input[type="button"]:hover,
 input[type="submit"]:hover,
-input[type="text"]:hover,
-input[type="text"]:focus {
+input
+{
     transition: .15s;
     background: #000000;
     color: #d29cff;

@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function PullDots () {
+function PullDot () {
     const [dots, setDots] = useState([]);
     fetch('api/dots')
         .then(response => response.json())
@@ -8,8 +8,4 @@ function PullDots () {
     return dots;
 }
 
-function PushDot (dot) {
-    // fetch('api/dots/',{method: 'POST', int: id});
-}
-
-export default PullDots
+export default PullDot

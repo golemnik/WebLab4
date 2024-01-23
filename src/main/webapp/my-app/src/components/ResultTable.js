@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import PullDots from "../../api/PullDots"
-import "../../css/main.css"
+import React from "react";
+import PullDots from "../api/PullDot"
+import "../css/main.css"
 
 function RowHeader () {
     return (

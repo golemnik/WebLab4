@@ -1,17 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import '../css/App.css';
+import React from 'react';
 import "../css/main.css"
-import ResultTable from "./main/ResultTable";
-import EnterTable from "./enter/EnterTable";
-import Button from "../components/Buttons"
+import EnterPage from "./EnterPage"
+import ResultPage from "./ResultPage";
 
-const App = () => {
-    return (
-        <div>
-            <ResultTable/>
-            <EnterTable/>
-        </div>
-    )
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: true
+        }
+    }
+
+
+    render() {
+        return (
+            <div>
+                <EnterPage
+                    visible={!this.state.visible}
+                />
+                <ResultPage
+                    visible={this.state.visible}
+                />
+            </div>
+        )
+    }
 }
 
 export default App;
