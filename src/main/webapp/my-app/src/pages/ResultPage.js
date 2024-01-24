@@ -6,30 +6,14 @@ import pullDot from "../api/PullDot";
 import funcs from "../components/drawing/Draw";
 
 class ResultPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            visible: props.visible
-        }
-        this.handleVisibility = this.handleVisibility.bind(this);
-    }
-
-    handleVisibility () {
-        this.setState(state => ({
-            visible: !state.visible
-        }));
-    }
     render() {
-        if(this.state.visible) {
-            return (
-                <div>
-                    <DotForm/>
-                    <ControlledGraph/>
-                    <ResultTable/>
-                </div>
-            )
-        }
-        return (<div/>)
+        return (
+            <div>
+                <DotForm/>
+                <ControlledGraph/>
+                <ResultTable/>
+            </div>
+        )
     }
 }
 

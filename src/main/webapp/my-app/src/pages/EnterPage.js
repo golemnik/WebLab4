@@ -1,45 +1,29 @@
 import React from "react";
 import ControlledInput from "../components/ControlledInput";
 import ControlledButton from "../components/ControlledButton";
+import {useDispatch, useSelector} from "react-redux";
+import {setLogged, setLogin} from "../store/AuthSlice";
 
-class EnterPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            visible: props.visible
-        }
-        this.handleVisibility = this.handleVisibility.bind(this);
+function EnterPage () {
+    // const user = useSelector((state) => state.auth.value);
+    const dispatch = useDispatch()
+
+    function handleVisibility () {
+        console.log("button click")
+
+        dispatch(setLogged(true));
     }
 
-    handleVisibility () {
-        this.setState(state => ({
-            visible: !state.visible
-        }));
-    }
-
-    render() {
-        if (this.state.visible) {
-            return (
-                <form>
-                    <ControlledInput type='login'/> <br/>
-                    <ControlledInput type='password'/> <br/>
-                    <ControlledButton
-                        type='submit'
-                        buttonAction={this.handleVisibility}
-                        buttonName={this.state.visible.toString()}
-                    />
-                </form>
-            )
-        }
-        return (
-            <div>
-                <ControlledButton
-                    buttonAction={this.handleVisibility}
-                    buttonName={this.state.visible.toString()}
-                />
-            </div>
-        )
-    }
+    return (
+        <form>
+            <ControlledInput type='login'/> <br/>
+            <ControlledInput type='password'/> <br/>
+            <ControlledButton
+                buttonAction={handleVisibility}
+                buttonName="login"
+            />
+        </form>
+    )
 }
 
 export default EnterPage

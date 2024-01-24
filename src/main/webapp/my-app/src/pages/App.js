@@ -2,29 +2,29 @@ import React from 'react';
 import "../css/main.css"
 import EnterPage from "./EnterPage"
 import ResultPage from "./ResultPage";
-import {Counter} from "../store/Counter";
+import {useDispatch, useSelector} from "react-redux";
 
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            visible: true
-        }
-    }
+function App () {
+    let authorized = useSelector((state) => state.auth.logged).payload;
+    // const authorized = false;
+    console.log("authorized: ", authorized);
 
-
-    render() {
+    if (authorized) {
         return (
             <div>
-                {/*<EnterPage*/}
-                {/*    visible={!this.state.visible}*/}
-                {/*/>*/}
-                <ResultPage visible={this.state.visible} />
-                {/*<Counter/>*/}
+                <ResultPage />
             </div>
         )
     }
+    else {
+        return (
+            <div>
+                <EnterPage />
+            </div>
+        )
+    }
+
 }
 
 export default App;
