@@ -1,7 +1,9 @@
 import React from "react";
 import ResultTable from "../components/ResultTable"
-import AddDotForm from "../components/AddDotForm"
-import DelDotForm from "../components/DelDotForm"
+import DotForm from "../components/DotForm"
+import ControlledGraph from "../components/drawing/ControlledGraph";
+import pullDot from "../api/PullDot";
+import funcs from "../components/drawing/Draw";
 
 class ResultPage extends React.Component {
     constructor(props) {
@@ -21,8 +23,8 @@ class ResultPage extends React.Component {
         if(this.state.visible) {
             return (
                 <div>
-                    <AddDotForm/>
-                    <DelDotForm/>
+                    <DotForm/>
+                    <ControlledGraph/>
                     <ResultTable/>
                 </div>
             )

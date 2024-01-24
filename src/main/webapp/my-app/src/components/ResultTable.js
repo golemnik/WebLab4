@@ -27,16 +27,18 @@ function Row (dot) {
 function ResultTable () {
     let dots = PullDots();
     return (
-        <table>
-            <thead>
-            <RowHeader/>
-            </thead>
-            <tbody >
-            {dots.map(dot =>
-                Row(dot)
-            )}
-            </tbody>
-        </table>
+        <div className="res">
+            <table>
+                <thead>
+                <RowHeader/>
+                </thead>
+                <tbody >
+                {dots.map(dot =>
+                    Row(dot)
+                )}
+                </tbody>
+            </table>
+        </div>
     )
 }
 

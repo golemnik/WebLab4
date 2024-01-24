@@ -1,3 +1,5 @@
+import PullDots from "../../api/PullDot";
+
 const mainColor = "rgb(224,224,224)";
 const d_mainColor = "rgb(107,107,107)";
 const hitColor = "rgb(119,255,40)"
@@ -9,8 +11,16 @@ const d_graphColor = "rgba(80,80,80,0.5)";
 
 function draw(arr, r) {
     const canvas = document.getElementById("canvas");
+
+    if(canvas == null) {
+        return;
+    }
+
     const scale = ~~(Math.sqrt((canvas.width**2 + canvas.height**2)/2)/r)-1;
     const center = new Point(canvas.width/2, canvas.height/2);
+    console.log(arr);
+
+
     if (canvas.getContext) {
         const ctx = canvas.getContext("2d");
         ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -110,7 +120,6 @@ function axis (ctx, center, scale, r, color) {
         mark_h(ctx, new Point(center.x, center.y-i*r/2), i/2+"R", color);
         mark_h(ctx, new Point(center.x, center.y+i*r/2), "-"+i/2+"R", color);
     }
-
 }
 
 function mark_v (ctx, p, t, color) {
@@ -155,8 +164,12 @@ function dot (ctx, p, borderColor, color) {
 }
 
 function convert (u_x, u_y, u_r, hit, center, r) {
-    console.log(((u_x/u_r)*r + center.x) + "   " + ((-u_y/u_r)*r + center.y));
+    // console.log(((u_x/u_r)*r + center.x) + "   " + ((-u_y/u_r)*r + center.y));
     return new Point((u_x/u_r)*r + center.x, (-u_y/u_r)*r + center.y, hit);
 }
 
-export default {draw, darkDot, lightDot};
+const funcs = {
+    draw, darkDot, lightDot
+}
+
+export default funcs;

@@ -2,6 +2,7 @@ import React from 'react';
 import "../css/main.css"
 import EnterPage from "./EnterPage"
 import ResultPage from "./ResultPage";
+import {Counter} from "../store/Counter";
 
 
 class App extends React.Component {
@@ -16,12 +17,11 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <EnterPage
-                    visible={!this.state.visible}
-                />
-                <ResultPage
-                    visible={this.state.visible}
-                />
+                {/*<EnterPage*/}
+                {/*    visible={!this.state.visible}*/}
+                {/*/>*/}
+                <ResultPage visible={this.state.visible} />
+                {/*<Counter/>*/}
             </div>
         )
     }

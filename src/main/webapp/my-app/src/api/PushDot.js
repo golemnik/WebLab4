@@ -3,7 +3,7 @@ function PushDot (dot) {
         {
             method: 'POST',
             headers: {'Content-Type': 'application/json;charset=utf-8'},
-            body: JSON.stringify(dot )
+            body: JSON.stringify(dot)
         })
 }
 
