@@ -9,8 +9,8 @@ const d_missColor = "rgb(126,0,0)"
 const graphColor = "rgba(255,255,255,0.5)";
 const d_graphColor = "rgba(80,80,80,0.5)";
 
-function draw(arr, r) {
-    const canvas = document.getElementById("canvas");
+function draw(canvas, arr, r) {
+    // const canvas = document.getElementById("canvas");
 
     if(canvas == null) {
         return;
@@ -26,6 +26,7 @@ function draw(arr, r) {
         ctx.clearRect(0,0,canvas.width,canvas.height);
         axis(ctx, center, scale, r, mainColor);
         area (ctx, center, r, graphColor);
+        console.log(arr);
         dots(ctx, center, r, arr, hitColor, missColor, mainColor);
     }
 }

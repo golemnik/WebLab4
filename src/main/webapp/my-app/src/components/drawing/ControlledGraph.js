@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import funcs from "./Draw";
 import pullDot from "../../api/PullDot";
 import pushDot from "../../api/PushDot";
 import {useDispatch, useSelector} from "react-redux";
 import {addDot} from "../../store/DotsSlice"
 import Dot from "../Dot";
+import store from "../../store/Store";
 
 
 function dott () {
@@ -48,17 +49,30 @@ function ControlledGraph () {
                 alert("y {" + yy + "} is out of range");
             }
             else {
-                dispatch(addDot(new Dot(xx, yy, 1)))
+                const dot = new Dot(xx, yy, 1);
+                dispatch(addDot({x: dot.x, y: dot.y, r: dot.r, hit: dot.hit}))
                 pushDot({x:xx, y:yy, r:1});
             }
         }
     }
 
+    const canvasRef = useRef(null);
 
-    funcs.draw(dots, r)
+
+    function callDraw() {
+        const canvas = canvasRef.current;
+        console.log("canvas effect")
+        funcs.draw(canvas, dots, r)
+    }
+
+    useEffect(callDraw, []);
+
+    console.log("canvas ret")
+    callDraw();
     return (
         <div className="can">
             <canvas id="canvas"
+                    ref={canvasRef}
                     width={width}
                     height={height}
                     onClickCapture={setDot}>
