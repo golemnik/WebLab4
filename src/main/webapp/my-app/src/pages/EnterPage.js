@@ -5,6 +5,8 @@ import SendLogin from "../api/Login"
 import SendRegister from "../api/Register"
 import User from "../components/User";
 import {wait} from "@testing-library/user-event/dist/utils";
+import sha256 from 'crypto-js/sha256';
+import Base64 from 'crypto-js/enc-base64';
 
 function EnterPage () {
     // const user = useSelector((state) => state.auth.value);
@@ -16,7 +18,7 @@ function EnterPage () {
     function tryLogin (event) {
         event.preventDefault();
 
-        SendLogin({login: login, password: password});
+        SendLogin({login: login, password: sha256(password).toString()});
 
         // console.log("tryLogin: ", logged);
         setLogin("");
@@ -26,7 +28,11 @@ function EnterPage () {
 
     function tryRegister (event) {
         event.preventDefault();
-        SendRegister({login: login, password: password});
+
+
+        SendRegister({login: login, password: sha256(password).toString()});
+        setLogin("");
+        setPassword("");
     }
 
     return (
