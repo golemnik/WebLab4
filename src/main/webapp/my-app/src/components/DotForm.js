@@ -3,7 +3,7 @@ import PushDot from "../api/PushDot";
 import DeleteDots from "../api/DeleteDots";
 import Dot from "./Dot"
 import {useDispatch} from "react-redux";
-import {deleteDots} from "../store/DotsSlice"
+import {addDot, deleteDots} from "../store/DotsSlice"
 
 function DotForm () {
     const dispatch = useDispatch();
@@ -27,6 +27,7 @@ function DotForm () {
     function handleSubmit(event) {
         event.preventDefault();
         PushDot(dot);
+        dispatch(addDot(dot));
         setDot(new Dot(0,0,0));
         // dot = new Dot(0,0,0);
     }
@@ -39,7 +40,7 @@ function DotForm () {
 
     return (
         <div className="forma">
-            <form onSubmit={handleSubmit}>
+            <form >
                 <div className="x">
                     <label>X = <input onChange={uX} value={dot.x}/> </label> <br/>
                 </div>
@@ -50,11 +51,11 @@ function DotForm () {
                     <label>R = <input onChange={uR} value={dot.r}/> </label> <br/>
                 </div>
                 <div className="sub">
-                    <button type="submit" > submit </button>
+                    <button type="button" onClick={handleSubmit}> submit </button>
                 </div>
             </form>
             <div className="sub" >
-                <button type="submit" onClick={handleDeleteSubmit}> Delete </button>
+                <button type="button" onClick={handleDeleteSubmit}> Delete </button>
             </div>
         </div>
     )
