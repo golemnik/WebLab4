@@ -24,7 +24,8 @@ function EnterPage () {
         // dispatch(setLogged(true));
     }
 
-    function tryRegister () {
+    function tryRegister (event) {
+        event.preventDefault();
         SendRegister({login: login, password: password});
     }
 
