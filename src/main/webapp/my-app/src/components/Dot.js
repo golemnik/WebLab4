@@ -7,10 +7,10 @@ class Dot {
         this.x = x;
         this.y = y;
         this.r = r;
-        this.hit = this.chekHit(x, y, r);
+        this.hit = this.checkHit(x, y, r);
     }
 
-    chekHit(x, y, r) {
+    checkHit(x, y, r) {
         return false;
     }
 }

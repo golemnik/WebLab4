@@ -4,6 +4,7 @@ import pullDot from "../../api/PullDot";
 import pushDot from "../../api/PushDot";
 import {useDispatch, useSelector} from "react-redux";
 import {addDot} from "../../store/DotsSlice"
+import Dot from "../Dot";
 
 
 function dott () {
@@ -47,7 +48,7 @@ function ControlledGraph () {
                 alert("y {" + yy + "} is out of range");
             }
             else {
-                dispatch(addDot({x:xx, y:yy, r:1}))
+                dispatch(addDot(new Dot(xx, yy, 1)))
                 pushDot({x:xx, y:yy, r:1});
             }
         }

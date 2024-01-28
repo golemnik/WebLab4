@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import PushDot from "../api/PushDot";
 import DeleteDots from "../api/DeleteDots";
 import Dot from "./Dot"
@@ -7,23 +7,28 @@ import {deleteDots} from "../store/DotsSlice"
 
 function DotForm () {
     const dispatch = useDispatch();
-    let dot = new Dot(0,0,0);
+    const [dot, setDot] = useState(new Dot(0,0,0));
+    // let dot = new Dot(0,0,0);
 
     function uX (event) {
-        dot.x = event.target.value;
+        setDot(new Dot(event.target.value, dot.y, dot.r));
+        // dot.x = event.target.value;
     }
     function uY (event) {
-        dot.y = event.target.value;
+        setDot(new Dot(dot.x, event.target.value, dot.r));
+        // dot.y = event.target.value;
     }
     function uR (event) {
-        dot.r = event.target.value;
+        setDot(new Dot(dot.x, dot.y, event.target.value));
+        // dot.r = event.target.value;
     }
 
 
     function handleSubmit(event) {
         event.preventDefault();
         PushDot(dot);
-        dot = new Dot(0,0,0);
+        setDot(new Dot(0,0,0));
+        // dot = new Dot(0,0,0);
     }
 
     function handleDeleteSubmit(event) {

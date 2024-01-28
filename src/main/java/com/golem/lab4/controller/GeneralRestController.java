@@ -1,7 +1,9 @@
 package com.golem.lab4.controller;
 
 import com.golem.lab4.data.Dot;
+import com.golem.lab4.data.LabUser;
 import com.golem.lab4.service.DotService;
+import com.golem.lab4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,4 +38,21 @@ public class GeneralRestController {
         dotService.deleteAll();
         return new ResponseEntity<>("Ok", HttpStatus.OK);
     }
+
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/login")
+    public ResponseEntity<Boolean> login (@RequestBody LabUser labUser) {
+        boolean result = userService.login(labUser);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody LabUser labUser) {
+        userService.register(labUser);
+        return new ResponseEntity<>("Ok", HttpStatus.OK);
+    }
+
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import PullDots from "../api/PullDot"
 import "../css/main.css"
+import {useSelector} from "react-redux";
 
 function RowHeader () {
     return (
@@ -13,9 +14,9 @@ function RowHeader () {
     )
 }
 
-function Row (dot) {
+function Row (dot, id) {
     return (
-        <tr className="hover">
+        <tr key={id} className="hover">
             <td> {dot.x} </td>
             <td> {dot.y} </td>
             <td> {dot.r} </td>
@@ -25,7 +26,8 @@ function Row (dot) {
 }
 
 function ResultTable () {
-    let dots = PullDots();
+    const dots = useSelector((state) => state.dots.value).map(dot => dot.payload)
+    let counter = 0;
     return (
         <div className="res">
             <table>
@@ -34,7 +36,7 @@ function ResultTable () {
                 </thead>
                 <tbody >
                 {dots.map(dot =>
-                    Row(dot)
+                    Row(dot, counter++)
                 )}
                 </tbody>
             </table>

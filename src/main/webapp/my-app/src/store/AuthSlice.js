@@ -5,7 +5,8 @@ export const authSlice = createSlice({
     initialState: {
         login: "",
         password: "",
-        logged: false
+        logged: false,
+        counter: 0
     },
     reducers: {
         setLogin: (state, login) => {
@@ -16,8 +17,9 @@ export const authSlice = createSlice({
         },
         setLogged: (state, auth) => {
             state.logged = auth;
-            console.log("logged");
-            console.log(state.logged);
+            // console.log("logged");
+            // console.log(state.logged);
+            state.counter++;
         }
     },
 })

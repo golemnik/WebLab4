@@ -1,7 +1,5 @@
 package com.golem.lab4.service;
 
-
-
 import com.golem.lab4.data.Dot;
 
 import java.util.List;
