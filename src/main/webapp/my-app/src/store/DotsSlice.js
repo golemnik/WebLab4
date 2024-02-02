@@ -10,9 +10,7 @@ export const dotsSlice = createSlice({
             state.value.push(point)
         },
         deleteDots: (state) => {
-            console.log("popaly")
             state.value = []
-            console.log("pochistily: ", state.value)
         }
     },
 })

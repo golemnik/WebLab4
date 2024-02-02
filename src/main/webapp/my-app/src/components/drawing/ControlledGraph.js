@@ -55,19 +55,15 @@ function ControlledGraph () {
             }
         }
     }
-
     const canvasRef = useRef(null);
-
 
     function callDraw() {
         const canvas = canvasRef.current;
-        console.log("canvas effect")
         funcs.draw(canvas, dots, r)
     }
 
     useEffect(callDraw, []);
 
-    console.log("canvas ret")
     callDraw();
     return (
         <div className="can">

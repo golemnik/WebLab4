@@ -17,8 +17,6 @@ export const authSlice = createSlice({
         },
         setLogged: (state, auth) => {
             state.logged = auth;
-            // console.log("logged");
-            // console.log(state.logged);
             state.counter++;
         }
     },

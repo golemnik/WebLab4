@@ -11,7 +11,13 @@ class Dot {
     }
 
     checkHit(x, y, r) {
-        return false;
+        return x >= 0
+            ? y >= 0
+                ? -x + r > y
+                : false
+            : y >= 0
+                ? x*x + y*y <= r*r
+                : x >= -r/2 && y >= -r;
     }
 }
 

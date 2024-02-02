@@ -79,3 +79,17 @@ div.res {
     --p: 100%;
     color: #fff;
 }
+
+div.enterPage {
+    position: relative;
+    align-content: center;
+    margin-top: 10%;
+}
+div.login, div.password, div.sub {
+    position: relative;
+    text-align: center;
+}
+
+div.errMsg {
+    color: red;
+}
