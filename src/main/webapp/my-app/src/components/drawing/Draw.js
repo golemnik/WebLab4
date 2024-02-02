@@ -18,7 +18,7 @@ function draw(canvas, arr, r) {
 
     const scale = ~~(Math.sqrt((canvas.width**2 + canvas.height**2)/2)/r)-1;
     const center = new Point(canvas.width/2, canvas.height/2);
-    console.log(arr);
+    // console.log(arr);
 
 
     if (canvas.getContext) {
@@ -26,7 +26,7 @@ function draw(canvas, arr, r) {
         ctx.clearRect(0,0,canvas.width,canvas.height);
         axis(ctx, center, scale, r, mainColor);
         area (ctx, center, r, graphColor);
-        console.log(arr);
+        // console.log(arr);
         dots(ctx, center, r, arr, hitColor, missColor, mainColor);
     }
 }
@@ -53,7 +53,12 @@ function darkDot (dx, dy, dr, hit, arr) {
 function lightDot (arr) {
     const canvas = document.getElementById("canvas");
     const r = (canvas.width+canvas.height)/25;
-    draw(arr, r);
+
+    if (canvas.getContext) {
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    draw(canvas, arr, r);
 }
 function dots (ctx, center, r, arr, hitColor, missColor, borderColor) {
     for (let i = 0; i < arr.length; i++) {

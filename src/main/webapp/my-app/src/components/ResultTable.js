@@ -1,7 +1,7 @@
 import React from "react";
-import PullDots from "../api/PullDot"
 import "../css/main.css"
 import {useSelector} from "react-redux";
+import funcs from "./drawing/Draw";
 
 function RowHeader () {
     return (
@@ -14,9 +14,21 @@ function RowHeader () {
     )
 }
 
-function Row (dot, id) {
+function Row (dots, dot, id) {
+
+    function dark () {
+        funcs.darkDot(dot.x, dot.y, dot.r, dot.hit.toString(), dots)
+    }
+
+    function light () {
+        funcs.lightDot(dots)
+    }
+
     return (
-        <tr key={id} className="hover">
+        <tr key={id} className="hover"
+            onMouseEnter={dark}
+            onMouseOut={light}
+        >
             <td> {dot.x} </td>
             <td> {dot.y} </td>
             <td> {dot.r} </td>
@@ -36,7 +48,7 @@ function ResultTable () {
                 </thead>
                 <tbody >
                 {dots.map(dot =>
-                    Row(dot, counter++)
+                    Row(dots, dot, counter++)
                 )}
                 </tbody>
             </table>

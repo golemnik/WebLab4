@@ -1,31 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
 import funcs from "./Draw";
-import pullDot from "../../api/PullDot";
 import pushDot from "../../api/PushDot";
 import {useDispatch, useSelector} from "react-redux";
 import {addDot} from "../../store/DotsSlice"
 import Dot from "../Dot";
-import store from "../../store/Store";
-
-
-function dott () {
-    document.querySelectorAll("tr[class=hover]").forEach(
-        (row) => {
-            let x = row.cells[0].innerHTML;
-            let y = row.cells[1].innerHTML;
-            let r = row.cells[2].innerHTML;
-            let hit = row.cells[3].innerHTML;
-            // alert(hit);
-            row.addEventListener("mouseover", function () {
-                funcs.darkDot(x, y, r, hit, pullDot);
-            });
-            row.addEventListener("mouseout", function () {
-                funcs.lightDot(pullDot);
-            });
-        });
-}
-
-
 
 function ControlledGraph () {
     const dots = useSelector((state) => state.dots.value).map(dot => dot.payload)

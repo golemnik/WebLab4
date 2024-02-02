@@ -32,7 +32,7 @@ public class Dot {
         this.r = r;
     }
 
-    public void setHit(boolean hit) {
+    public void isHit(boolean hit) {
         this.hit = hit;
     }
 
