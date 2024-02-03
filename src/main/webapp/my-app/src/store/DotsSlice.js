@@ -9,8 +9,6 @@ export const dotsSlice = createSlice({
     reducers: {
         addDot: (state, point) => {
             state.value.push(point.payload)
-            // console.log("point fd", point)
-            // console.log("state fd", state)
         },
         deleteDots: (state) => {
             state.value = []
@@ -18,15 +16,6 @@ export const dotsSlice = createSlice({
         loadDots: (state, dots) => {
             state.value = [];
             state.value = state.value.concat(dots.payload);
-            // state.value.push(dots);
-            // dots.payload.forEach(dot => {
-            //     console.log("dot", dot)
-            //
-            //     // state.value.push(dot)
-            // });
-            console.log("payload", dots.payload)
-            // state.value = dots.payload;
-            // console.log("state.value", state.value)
             state.loaded = true;
         }
     },
@@ -44,10 +33,7 @@ export const fetchPoints = createAsyncThunk('dotsSlice/fetchPoints', async () =>
             .then(response => response.json())
             .then(data => {
                 data.forEach(dot => {dots.push({x: dot.x, y: dot.y, r: dot.r, hit: dot.hit})})
-                // console.log("data", dots)
-                // store.dispatch(loadDots(dots));
             })
-    console.log("fetchPo", dots)
     return dots;
 })
 

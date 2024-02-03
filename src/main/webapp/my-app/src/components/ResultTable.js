@@ -40,7 +40,6 @@ function Row (dots, dot, id) {
 function ResultTable () {
     const dots = useSelector((state) => state.dots.value)
     let counter = 0;
-    console.log("RT", dots)
     return (
         <div className="res">
             <table>
