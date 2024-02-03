@@ -2,7 +2,9 @@ import React from 'react';
 import "../css/main.css"
 import EnterPage from "./EnterPage"
 import ResultPage from "./ResultPage";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import PullDot from "../api/PullDot";
+import {addDot} from "../store/DotsSlice";
 
 
 function App () {

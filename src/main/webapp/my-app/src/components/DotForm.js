@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import PushDot from "../api/PushDot";
 import DeleteDots from "../api/DeleteDots";
 import Dot from "./Dot"
-import {useDispatch} from "react-redux";
-import {addDot, deleteDots} from "../store/DotsSlice"
+import {useDispatch, useSelector} from "react-redux";
+import {addDot, deleteDots, fetchPoints, loadDots} from "../store/DotsSlice"
+import PullDot from "../api/PullDot";
 
 function DotForm () {
     const dispatch = useDispatch();
@@ -65,7 +66,22 @@ function DotForm () {
         setDot(new Dot(1,1,1));
     }
 
-
+    //todo выгрузка из бд не смогла, если точки были, а пользователь только зашел
+    const loaded = useSelector((state) => state.dots.loaded);
+    //
+    //
+    // useEffect(() => {
+    //
+    //     if (!loaded) {
+    //         // const dots = fetchPoints();
+    //         // dispatch(fetchPoints())
+    //
+    //     }
+    // }, [dispatch, loaded]);
+    //
+    if (!loaded) {
+        PullDot();
+    }
     return (
         <div className="forma">
             <form >

@@ -6,7 +6,7 @@ import {addDot} from "../../store/DotsSlice"
 import Dot from "../Dot";
 
 function ControlledGraph () {
-    const dots = useSelector((state) => state.dots.value).map(dot => dot.payload)
+    const dots = useSelector((state) => state.dots.value)
     const dispatch = useDispatch()
 
     const width=600;
